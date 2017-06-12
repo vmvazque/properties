@@ -7,7 +7,15 @@ export PATH=$PATH:$SCALA_HOME/bin
 export NODE_HOME=~/.nvm/versions/node/v6.10.3
 export PATH=$PATH:$NODE_HOME/bin
 
-
+for entry in ~/bin/*
+do
+  if [ -d $entry ]; then
+    if [ -d $entry/bin ]; then
+      echo "Adding '$entry' to path"
+      export PATH=$PATH:$entry/bin
+    fi
+  fi
+done
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
