@@ -11,7 +11,7 @@ for entry in ~/bin/*
 do
   if [ -d $entry ]; then
     if [ -d $entry/bin ]; then
-      echo "Adding '$entry' to path"
+      echo "Adding '$entry/bin' to path"
       export PATH=$PATH:$entry/bin
     fi
   fi
@@ -55,7 +55,21 @@ alias c="clear"
 
 #dev stuff
 export DEV="/home/vmvazque/dev"
-export hg="hogwarts"
+alias hog="dev hogwarts"
+alias log="tail -f $HOME/.bcs.servlet.logs/catalina.out"
+# alias pqu='java -jar $HOME/dev/bin/pqu.jar $@'
+# alias pqubatch='sh $HOME/dev/bin/pqubatch.sh $1'
+# alias datastudio='sh $HOME/lib/datastudio/datastudio.sh &'
+# alias guilog='java -Dsun.java2d.opengl=True -cp $HOME/bin/guilogging/guilogging.jar -port=1234 &'
+alias guilog='java -jar $HOME/bin/guilogging/bcs-antlibs-guilogging.jar &'
+
+rport=8103
+lport=8009
+alias tunnel="ssh -N -R $rport:localhost:$lport vmvazque@dbsportal4.ucsd.edu"
+
+alias pqu='java -jar $HOME/dev/jars/pqu.jar $@'
+alias pqin="pqu -out repo.default -in $1"
+
 dev() {
   cd $DEV/$1
 }
