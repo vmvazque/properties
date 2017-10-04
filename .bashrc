@@ -57,9 +57,8 @@ alias c="clear"
 export DEV="/home/vmvazque/dev"
 alias hog="dev hogwarts"
 alias log="tail -f $HOME/.bcs.servlet.logs/catalina.out"
-# alias pqu='java -jar $HOME/dev/bin/pqu.jar $@'
 # alias pqubatch='sh $HOME/dev/bin/pqubatch.sh $1'
-# alias datastudio='sh $HOME/lib/datastudio/datastudio.sh &'
+alias datastudio='sh $HOME/scripts/datastudio/datastudio.sh &'
 # alias guilog='java -Dsun.java2d.opengl=True -cp $HOME/bin/guilogging/guilogging.jar -port=1234 &'
 alias guilog='java -jar $HOME/bin/guilogging/bcs-antlibs-guilogging.jar &'
 
@@ -67,7 +66,7 @@ rport=8103
 lport=8009
 alias tunnel="ssh -N -R $rport:localhost:$lport vmvazque@dbsportal4.ucsd.edu"
 
-alias pqu='java -jar $HOME/dev/jars/pqu.jar $@'
+#alias pqu='java -jar $HOME/dev/jars/pqu.jar $@'
 alias pqin="pqu -out repo.default -in $1"
 
 dev() {
@@ -102,3 +101,16 @@ extract () {
       echo "'$1' is not a valid file"
   fi
 }
+
+sbtjava() {
+  cd src/main/java/edu/ucsd/bio/$1
+}
+
+sbtscala() {
+  cd src/main/scala/edu/ucsd/bio/$1
+}
+
+function npmDo { 
+  (PATH=$(npm bin):$PATH; eval $@;) 
+}
+
