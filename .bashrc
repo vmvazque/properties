@@ -61,6 +61,7 @@ alias log="tail -f $HOME/.bcs.servlet.logs/catalina.out"
 alias datastudio='sh $HOME/scripts/datastudio/datastudio.sh &'
 # alias guilog='java -Dsun.java2d.opengl=True -cp $HOME/bin/guilogging/guilogging.jar -port=1234 &'
 alias guilog='java -jar $HOME/bin/guilogging/bcs-antlibs-guilogging.jar &'
+alias de='env | grep DOCKER_'
 
 rport=8103
 lport=8009
@@ -114,3 +115,21 @@ function npmDo {
   (PATH=$(npm bin):$PATH; eval $@;) 
 }
 
+function dm() {
+  eval $(docker-machine env $1)
+}
+
+function unsetDm() {
+  eval $(docker-machine env -u) 
+}
+
+export prefix='/home/vmvazque/dev/sbtMove/bcs_javacore/src/test/resources/edu/ucsd/bio'
+export tempDir='/home/vmvazque/dev/sbtMove/bcs_javacore/src/test/java/edu/ucsd/bio'
+function moveShit() {
+  mv $tempDir/$moveDir/$1 $prefix/$moveDir/
+}
+function grr() {
+  mkdir $1
+  export moveDir=$1
+  echo $moveDir
+}
