@@ -54,7 +54,7 @@ alias cd..="cd .."
 alias c="clear"
 
 #dev stuff
-export DEV="/home/vmvazque/dev"
+export DEV="/home/$(whoami)/dev"
 alias hog="dev hogwarts"
 alias log="tail -f $HOME/.bcs.servlet.logs/catalina.out"
 # alias pqubatch='sh $HOME/dev/bin/pqubatch.sh $1'
@@ -133,3 +133,5 @@ function grr() {
   export moveDir=$1
   echo $moveDir
 }
+
+source ~/.xsessionrc
