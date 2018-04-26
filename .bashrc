@@ -52,6 +52,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias cd..="cd .."
 alias c="clear"
+alias code='code --reuse-window'
 
 #dev stuff
 export DEV="/home/$(whoami)/dev"
