@@ -4,8 +4,8 @@
 ## My Stuff
 export SCALA_HOME=~/bin/scala-2.12.2
 export PATH=$PATH:$SCALA_HOME/bin
-export NODE_HOME=~/.nvm/versions/node/v6.10.3
-export PATH=$PATH:$NODE_HOME/bin
+# export NODE_HOME=~/.nvm/versions/node/v6.10.3
+# export PATH=$PATH:$NODE_HOME/bin
 
 for entry in ~/bin/*
 do
@@ -124,15 +124,5 @@ function unsetDm() {
   eval $(docker-machine env -u) 
 }
 
-export prefix='/home/vmvazque/dev/sbtMove/bcs_javacore/src/test/resources/edu/ucsd/bio'
-export tempDir='/home/vmvazque/dev/sbtMove/bcs_javacore/src/test/java/edu/ucsd/bio'
-function moveShit() {
-  mv $tempDir/$moveDir/$1 $prefix/$moveDir/
-}
-function grr() {
-  mkdir $1
-  export moveDir=$1
-  echo $moveDir
-}
-
-source ~/.xsessionrc
+alias masterClean='git co master && git pull && git bclean'
+source ~/properties/.xsessionrc
