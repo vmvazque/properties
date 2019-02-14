@@ -52,7 +52,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias cd..="cd .."
 alias c="clear"
-alias code='code --reuse-window'
+# alias code='code --reuse-window'
 
 #dev stuff
 export DEV="/home/$(whoami)/dev"
@@ -126,3 +126,35 @@ function unsetDm() {
 
 alias masterClean='git co master && git pull && git bclean'
 source ~/properties/.xsessionrc
+
+function thingy() {
+  code $1/src/main/webapp/WEB-INF/web.xml
+}
+export PATH=home/vmvazque/.local/bin:$PATH
+
+function gitDiff() {
+  git diff origin/vmv/f-test-docker:$1/src/main/webapp/WEB-INF/web.xml -- $1/src/main/webapp/WEB-INF/web.xml
+}
+
+function redo() {
+  docker service rm proxy_haproxy
+  docker-compose build
+  docker stack deploy -c docker-compose.yml proxy
+  docker service logs --follow proxy_haproxy
+}
+
+function awsDocker() {
+  ssh -i ~/.ssh/docker_dev -NL localhost:2374:/var/run/docker.sock docker@10.160.5.$1 &
+}
+
+function setDocker() {
+  export DOCKER_HOST=localhost:2374
+}
+
+alias unsetDocker="unset DOCKER_HOST"
+
+function whichDocker() {
+  echo $DOCKER_HOST
+}
+
+export ENVIRONMENT_MODE=LOCAL
